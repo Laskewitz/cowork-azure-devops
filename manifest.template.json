@@ -16,7 +16,7 @@
   },
   "description": {
     "short": "Work with Azure DevOps work items, repos, pipelines, and boards from Copilot Cowork.",
-    "full": "Azure DevOps for Copilot Cowork connects Microsoft 365 Copilot Cowork to the Azure DevOps remote MCP server for the 'devrel' organization and project, so users can query and update work items, pull requests, pipelines, and boards using natural language."
+    "full": "Azure DevOps for Copilot Cowork connects Microsoft 365 Copilot Cowork to the Azure DevOps remote MCP server for the '{{ORGANIZATION}}' organization and '{{PROJECT}}' project, so users can query and update work items, pull requests, pipelines, and boards using natural language."
   },
   "icons": {
     "color": "color.png",
@@ -29,11 +29,11 @@
   "agentConnectors": [
     {
       "id": "ado-remote-mcp",
-      "displayName": "Azure DevOps",
-      "description": "Remote MCP server for Azure DevOps.",
+      "displayName": "Azure DevOps ({{ORGANIZATION}})",
+      "description": "Remote MCP server for the Azure DevOps '{{ORGANIZATION}}' organization.",
       "toolSource": {
         "remoteMcpServer": {
-          "mcpServerUrl": "https://mcp.dev.azure.com/devrel",
+          "mcpServerUrl": "https://mcp.dev.azure.com/{{ORGANIZATION}}",
           "authorization": {
             "type": "OAuthPluginVault",
             "referenceId": "ado-remote-mcp-oauth"

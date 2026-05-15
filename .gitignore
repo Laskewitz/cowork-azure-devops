@@ -1,5 +1,6 @@
 # Build artifacts
 *.zip
+build/
 
 # OS / editor
 .DS_Store
