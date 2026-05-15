@@ -11,8 +11,8 @@
     "termsOfUseUrl": "https://dev.azure.com/devrel/terms"
   },
   "name": {
-    "short": "Cowork Azure DevOps",
-    "full": "Cowork Azure DevOps Plugin"
+    "short": "Azure DevOps",
+    "full": "Azure DevOps for Copilot Cowork"
   },
   "description": {
     "short": "Work with Azure DevOps work items, repos, pipelines, and boards from Cowork.",
