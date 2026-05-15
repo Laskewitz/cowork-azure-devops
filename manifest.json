@@ -15,8 +15,8 @@
     "full": "Azure DevOps for Copilot Cowork"
   },
   "description": {
-    "short": "Work with Azure DevOps work items, repos, pipelines, and boards from Cowork.",
-    "full": "Connects Microsoft 365 Copilot Cowork to the Azure DevOps remote MCP server for the 'devrel' organization and project, so users can query work items, pull requests, pipelines, and boards using natural language."
+    "short": "Work with Azure DevOps work items, repos, pipelines, and boards from Copilot Cowork.",
+    "full": "Azure DevOps for Copilot Cowork connects Microsoft 365 Copilot Cowork to the Azure DevOps remote MCP server for the 'devrel' organization and project, so users can query and update work items, pull requests, pipelines, and boards using natural language."
   },
   "icons": {
     "color": "color.png",

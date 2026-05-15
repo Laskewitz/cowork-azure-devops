@@ -1,6 +1,6 @@
-# Cowork Azure DevOps
+# Azure DevOps for Copilot Cowork
 
-A Microsoft 365 Copilot **Cowork** plugin that connects to Azure DevOps via the
+A Microsoft 365 **Copilot Cowork** plugin that connects to Azure DevOps via the
 remote MCP server, scoped to the `devrel` organization and `devrel` project.
 
 ## Contents
