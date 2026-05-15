@@ -1,0 +1,45 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/vDevPreview/MicrosoftTeams.schema.json",
+  "manifestVersion": "devPreview",
+  "version": "1.0.0",
+  "id": "b07543df-ac86-4f8c-9654-c014022abdbd",
+  "packageName": "com.devrel.cowork-azure-devops",
+  "developer": {
+    "name": "DevRel",
+    "websiteUrl": "https://dev.azure.com/devrel",
+    "privacyUrl": "https://dev.azure.com/devrel/privacy",
+    "termsOfUseUrl": "https://dev.azure.com/devrel/terms"
+  },
+  "name": {
+    "short": "Cowork Azure DevOps",
+    "full": "Cowork Azure DevOps Plugin"
+  },
+  "description": {
+    "short": "Work with Azure DevOps work items, repos, pipelines, and boards from Cowork.",
+    "full": "Connects Microsoft 365 Copilot Cowork to the Azure DevOps remote MCP server for the 'devrel' organization and project, so users can query work items, pull requests, pipelines, and boards using natural language."
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "accentColor": "#0078D4",
+  "agentSkills": [
+    { "folder": "./skills/azure-devops-assistant" }
+  ],
+  "agentConnectors": [
+    {
+      "id": "ado-remote-mcp",
+      "displayName": "Azure DevOps (devrel)",
+      "description": "Remote MCP server for the Azure DevOps 'devrel' organization.",
+      "toolSource": {
+        "remoteMcpServer": {
+          "mcpServerUrl": "https://mcp.dev.azure.com/devrel",
+          "authorization": {
+            "type": "OAuthPluginVault",
+            "referenceId": "ado-remote-mcp-oauth"
+          }
+        }
+      }
+    }
+  ]
+}
