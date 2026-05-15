@@ -6,13 +6,14 @@
 .EXAMPLE
   .\build.ps1
   .\build.ps1 -Organization contoso -Project payments
-  .\build.ps1 -Organization devrel -Project devrel -OutputDir .\dist
+  .\build.ps1 -Organization devrel -Project devrel -DistDir .\out
 #>
 [CmdletBinding()]
 param(
     [string]$Organization = "devrel",
     [string]$Project      = "devrel",
-    [string]$OutputDir    = (Join-Path $PSScriptRoot "build")
+    [string]$BuildDir     = (Join-Path $PSScriptRoot "build"),
+    [string]$DistDir      = (Join-Path $PSScriptRoot "dist")
 )
 
 $ErrorActionPreference = "Stop"
@@ -27,10 +28,13 @@ function Expand-Template {
 
 Write-Host "Building package for organization='$Organization' project='$Project'..."
 
-# Clean and recreate output directory
-if (Test-Path $OutputDir) { Remove-Item -Recurse -Force $OutputDir }
-$pkgDir = Join-Path $OutputDir "package"
+# Clean and recreate staging directory
+if (Test-Path $BuildDir) { Remove-Item -Recurse -Force $BuildDir }
+$pkgDir = Join-Path $BuildDir "package"
 New-Item -ItemType Directory -Path $pkgDir -Force | Out-Null
+
+# Ensure dist directory exists
+New-Item -ItemType Directory -Path $DistDir -Force | Out-Null
 
 # manifest.json
 Expand-Template (Join-Path $root "manifest.template.json") |
@@ -56,9 +60,9 @@ Get-ChildItem -Recurse -File $skillsSrc | ForEach-Object {
     }
 }
 
-# Zip
+# Zip into dist/
 $zipName = "azure-devops-for-copilot-cowork-$Organization-$Project.zip"
-$zipPath = Join-Path $OutputDir $zipName
+$zipPath = Join-Path $DistDir $zipName
 Compress-Archive -Path (Join-Path $pkgDir "*") -DestinationPath $zipPath -Force
 
 Write-Host "Done: $zipPath"

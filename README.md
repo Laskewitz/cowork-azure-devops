@@ -53,9 +53,8 @@ From the repo root:
 .\build.ps1 -Organization contoso -Project payments
 ```
 
-The script writes the final `manifest.json`, icons, and expanded `SKILL.md` to
-`./build/package/`, and produces a zip at
-`./build/azure-devops-for-copilot-cowork-<org>-<project>.zip`.
+The script writes the staged package contents to `./build/package/` and the
+final zip to `./dist/azure-devops-for-copilot-cowork-<org>-<project>.zip`.
 
 Then sideload the `.zip` via **M365 Admin Center → Manage Apps → Upload custom
 app**, or submit through Partner Center.
