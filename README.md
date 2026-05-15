@@ -60,6 +60,31 @@ The script writes the final `manifest.json`, icons, and expanded `SKILL.md` to
 Then sideload the `.zip` via **M365 Admin Center → Manage Apps → Upload custom
 app**, or submit through Partner Center.
 
+## Updating the plugin
+
+Skills can't be edited in place after a user imports the plugin — `SKILL.md`
+content is part of the immutable app package. To change a skill (or any other
+package content), re-publish a new version:
+
+1. Edit `skills/<skill>/SKILL.template.md` (or other package files) in this repo.
+2. Bump `"version"` in `manifest.template.json` (for example, `1.0.0` → `1.0.1`).
+   Keep the `"id"` GUID stable across versions — that's what tells M365 this is
+   an update rather than a new app.
+3. Run `.\build.ps1` to produce a new `.zip`.
+4. Re-upload via **M365 Admin Center → Manage Apps → Upload custom app** for
+   sideloaded testing, or submit the new version through Partner Center for the
+   store. Installed users pick up the new version automatically.
+
+End users themselves can only enable/disable the plugin (and individual skills)
+from the **Sources & Skills** panel, and complete connector sign-in. They can't
+edit skill prompts or frontmatter.
+
+> [!TIP]
+> The MCP connector's tool surface is discovered at runtime via `tools/list`,
+> so changes that live in the MCP server itself don't require re-packaging the
+> plugin — only changes to `manifest.json`, `SKILL.md`, icons, or companion
+> files do.
+
 ## Notes
 
 - `color.png` and `outline.png` in this repo are placeholders — replace them with
